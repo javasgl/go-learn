@@ -1,0 +1,21 @@
+package main 
+import (
+    "fmt"
+    "log"
+    "net/http"
+)
+type Hello struct{}
+
+func (h Hello) ServeHTTP(w http.ResponseWriter,r *http.Request){
+    fmt.Fprint(w, "Hello Http!")
+    if r !=nil{
+    	fmt.Println(r)
+    }    
+}
+func main(){
+    var h Hello
+    err :=http.ListenAndServe("localhost:8080",h)
+    if err != nil{
+        log.Fatal(err)    
+    }
+}
