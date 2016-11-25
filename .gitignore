@@ -1,4 +1,6 @@
 #ignore files
+.idea
+*.iml
 src/github.com/*
 bin/*
 pkg/*
