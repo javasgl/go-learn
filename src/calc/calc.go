@@ -14,6 +14,9 @@ var Usage = func() {
 }
 
 func main() {
+	for i, v := range os.Args {
+		fmt.Printf("%d:\t%s\n", i, v)
+	}
 	args := os.Args[1:]
 	if args == nil || len(args) < 2 {
 		Usage()
