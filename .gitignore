@@ -2,5 +2,15 @@
 .idea
 *.iml
 src/github.com/*
+src/calc
+src/go_qconf_web
+src/gomessage
+src/gochat
+src/gochat_refactor
+src/sand
+src/wolf
+src/rbac
+src/sendSMS
+src/goadstat
 bin/*
 pkg/*
