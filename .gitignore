@@ -12,5 +12,7 @@ src/wolf
 src/rbac
 src/sendSMS
 src/goadstat
+src/golang.org
+src/golang
 bin/*
 pkg/*
