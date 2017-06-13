@@ -21,6 +21,8 @@ func (user User) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(res, user.Name, user.Age, user.Sex)
 }
 func main() {
+	http.Client
+	http.Transport
 	http.Handle("/string", String("I am a string!"))
 	http.Handle("/user", User{"songgl", 20, false})
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
