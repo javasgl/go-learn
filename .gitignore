@@ -14,5 +14,6 @@ src/sendSMS
 src/goadstat
 src/golang.org
 src/golang
+src/gopkg.in
 bin/*
 pkg/*
