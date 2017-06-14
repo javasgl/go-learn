@@ -2,7 +2,9 @@ package models
 
 import (
 	"html/template"
+	"log"
 	"net/http"
+	"runtime/debug"
 )
 
 var (
@@ -18,5 +20,20 @@ func RenderHtml(w http.ResponseWriter, temp string, locals map[string]interface{
 func CheckErr(err error) {
 	if err != nil {
 		panic(err)
+	}
+}
+
+func SafeHandler(fn http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if err, ok := recover().(error); ok {
+
+				RenderHtml(w, "error", map[string]interface{}{"err": err.Error(), "stack": string(debug.Stack())})
+
+				log.Printf("Warning:panic in %v - %v ", fn, err)
+				log.Println(string(debug.Stack()))
+			}
+		}()
+		fn(w, r)
 	}
 }

@@ -11,9 +11,9 @@ import (
 
 func main() {
 	log.Print("listen on http://127.0.0.1:8080")
-	http.HandleFunc("/upload", models.Upload)
-	http.HandleFunc("/view", models.View)
-	http.HandleFunc("/list", models.List)
+	http.HandleFunc("/upload", models.SafeHandler(models.Upload))
+	http.HandleFunc("/view", models.SafeHandler(models.View))
+	http.HandleFunc("/list", models.SafeHandler(models.List))
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe:", err.Error())
