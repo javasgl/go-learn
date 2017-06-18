@@ -2,7 +2,23 @@ package main
 
 import "fmt"
 
+const (
+	Font = 200
+	SIZE = iota
+	SIZE_1
+	SIZE_2
+	SIZE_3
+	SIZE_4
+)
+
 func main() {
+
+	fmt.Println(Font)
+	fmt.Println("size:", SIZE)
+	fmt.Println("size1:", SIZE_1)
+	fmt.Println("size2:", SIZE_2)
+	fmt.Println("size3:", SIZE_3)
+	fmt.Println("size4:", SIZE_4)
 
 	fmt.Println("Hello World")
 
