@@ -13,6 +13,12 @@ const (
 
 func main() {
 
+	arr := []int{1, 3, 4, 5, 6, 7}
+	for index, val := range arr {
+
+		fmt.Println(index, "===", val)
+	}
+
 	fmt.Println(Font)
 	fmt.Println("size:", SIZE)
 	fmt.Println("size1:", SIZE_1)
