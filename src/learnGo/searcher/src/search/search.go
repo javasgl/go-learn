@@ -27,6 +27,7 @@ func Run(term string) {
 
 		go func(matcher Matcher, feed *Feed) {
 
+			matcher.Search(feed, term)
 			waitGroup.Done()
 		}(matcher, feed)
 	}
@@ -35,4 +36,12 @@ func Run(term string) {
 		close(results)
 	}()
 	Display(results)
+}
+
+func Register(feedType string, matcher Matcher) {
+	if _, exists := matchers[feedType]; exists {
+		log.Fatalln("matcher already exists")
+	}
+	log.Println("Register:", feedType, " matcher")
+	matchers[feedType] = matcher
 }

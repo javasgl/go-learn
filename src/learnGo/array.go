@@ -3,6 +3,13 @@ package main
 import "fmt"
 
 func main() {
+
+	var array1 [5]*string
+	var array2 = [5]*string{new(string)}
+	fmt.Println(array1)
+	fmt.Println(array2)
+	fmt.Println(array2[0])
+
 	var arr1 []int
 	printArr(arr1)
 	arr1 = append(arr1, 0)

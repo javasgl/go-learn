@@ -1,13 +1,9 @@
 package search
 
-import "log"
-
-type Matcher struct {
-}
-
-func Display(chan *result) {
-
-}
+import (
+	"fmt"
+	"log"
+)
 
 type Result struct {
 	Field   string
@@ -29,5 +25,11 @@ func Match(matcher Matcher, feed *Feed, searchTerm string, results chan<- *Resul
 	for _, result := range searchResults {
 
 		results <- result
+	}
+}
+
+func Display(results chan *Result) {
+	for result := range results {
+		fmt.Printf("%s:\n%s\n\n", result.Field, result.Content)
 	}
 }

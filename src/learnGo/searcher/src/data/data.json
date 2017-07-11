@@ -1,12 +1,7 @@
 [
 	{
-		"site":"test",
-		"link":"https://ss",
-		"type":"rss"
-	},
-	{
-		"site":"test",
-		"link":"https://ss",
+		"site":"sitename",
+		"link":"http://www.ruanyifeng.com/blog/atom.xml",
 		"type":"rss"
 	}
 ]

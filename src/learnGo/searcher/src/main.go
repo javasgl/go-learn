@@ -13,5 +13,5 @@ func main() {
 
 func init() {
 	log.SetOutput(os.Stdout)
-	search.Run("run")
+	search.Run("中国")
 }

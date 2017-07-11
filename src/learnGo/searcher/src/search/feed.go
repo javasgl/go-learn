@@ -23,6 +23,6 @@ func RetrieveFeeds() ([]*Feed, error) {
 	defer file.Close()
 
 	var feeds []*Feed
-	err = json.NewDecoder(file).Decode(feeds)
+	err = json.NewDecoder(file).Decode(&feeds)
 	return feeds, err
 }
