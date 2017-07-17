@@ -15,5 +15,6 @@ src/goadstat
 src/golang.org/*
 src/golang
 src/gopkg.in
+src/gomessage*
 bin/*
 pkg/*
