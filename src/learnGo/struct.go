@@ -53,4 +53,29 @@ func main() {
 	(&user).Say2()
 	fmt.Println(user)
 
+	fmt.Println("=============")
+
+	d := D{12}
+	e := E{33}
+
+	d.a()
+	e.a()
+
+}
+
+type D struct {
+	x int
+}
+
+type E struct {
+	x int
+}
+
+//同名,recevier 不同
+func (s D) a() {
+	fmt.Println(s.x)
+}
+
+func (s E) a() {
+	fmt.Println(s.x)
 }

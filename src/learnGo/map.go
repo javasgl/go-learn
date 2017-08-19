@@ -5,8 +5,10 @@ import "fmt"
 func main() {
 	arrMap := make(map[int]string)
 	print(arrMap)
+
 	arrMap[1] = "一"
 	arrMap[2] = "二"
+
 	print(arrMap)
 	for index, val := range arrMap {
 
@@ -16,7 +18,8 @@ func main() {
 			continue
 		}
 	}
+
 }
 func print(arrMap map[int]string) {
-	fmt.Printf("map::%v\n", arrMap)
+	fmt.Printf("%#v\n", arrMap)
 }
