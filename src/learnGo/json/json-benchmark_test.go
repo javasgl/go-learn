@@ -1,13 +1,25 @@
 package json
 
 import (
-	"encoding/json"
 	"testing"
+
+	"encoding/json"
 
 	jsoniter "github.com/json-iterator/go"
 )
 
-func Benchmark_array_by_stardard_lib(b *testing.B) {
+const (
+	jstr = `{"req":[{"uid":"1","url":"http://baidu.com"},{"uid":"2","url":"http://www.sohu.com"}]}`
+)
+
+type MyJsonName struct {
+	Req []struct {
+		UID string `json:"uid"`
+		URL string `json:"url"`
+	} `json:"req"`
+}
+
+func Benchmark_array_by_json(b *testing.B) {
 	b.ReportAllocs()
 	for n := 0; n < b.N; n++ {
 		sample := make([]int, 0, 10)
@@ -20,5 +32,19 @@ func Benchmark_array_by_jsoniter(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		sample := make([]int, 0, 10)
 		jsoniter.Unmarshal([]byte(`[1,2,3,4,5,6,7,8,9]`), &sample)
+	}
+}
+
+func Benchmark_decode_by_json(b *testing.B) {
+	var jsonstr MyJsonName
+	for n := 0; n < b.N; n++ {
+		json.Unmarshal([]byte(jstr), &jsonstr)
+	}
+}
+
+func Benchmark_decode_by_jsoniter(b *testing.B) {
+	var jsonstr MyJsonName
+	for n := 0; n < b.N; n++ {
+		jsoniter.Unmarshal([]byte(jstr), &jsonstr)
 	}
 }

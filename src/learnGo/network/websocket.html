@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>websocket</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+	var sock = null;
+	var wsuri = "ws://127.0.0.1:54321"
+	window.onload = function(){
+
+		console.log("load....")
+		sock = new WebSocket(wsuri)
+		sock.onopen=function(){
+			console.log("websocket connect to "+wsuri);
+		}
+		sock.onclose=function(e){
+			console.log("websocket closed ! "+e.code);
+		}
+		sock.onmessage=function(e){
+			console.log("message recevied: "+e.data);
+		}
+	}
+
+	function send(){
+		var msg =document.getElementById('message').value;
+		sock.send(msg)
+	}
+
+</script>
+<h1>websocket echo test</h1>
+<form>
+<input type="text" name="" id="message">
+</form>
+<button onclick="send();">send message</button>
+
+</body>
+</html>
