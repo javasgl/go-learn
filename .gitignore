@@ -1,6 +1,8 @@
 #ignore files
 .idea
 *.iml
+src/deploy-test
+src/pay-qa
 src/base
 src/gaea-admin
 src/pay
