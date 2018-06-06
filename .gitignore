@@ -1,6 +1,7 @@
 #ignore files
 .idea
 *.iml
+src/deploy
 src/deploy-test
 src/pay-qa
 src/base
