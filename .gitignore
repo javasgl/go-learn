@@ -24,5 +24,6 @@ src/golang.org/*
 src/golang
 src/gopkg.in
 src/gomessage*
+src/nsq
 bin/*
 pkg/*
