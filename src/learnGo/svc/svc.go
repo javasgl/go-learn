@@ -17,7 +17,7 @@ type program struct {
 
 func main() {
 	prg := &program{}
-	if err := svc.Run(prg); err != nil {
+	if err := svc.Run(prg, syscall.SIGUSR1, syscall.SIGINT, syscall.SIGTERM); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -33,8 +33,9 @@ func (program) Start() error {
 	fmt.Println("start.....")
 	fmt.Println(syscall.Getpid())
 	go func() {
-		for {
-			fmt.Println("....", time.Now(), syscall.Getpid())
+		ticker := time.NewTicker(2 * time.Second)
+		for t := range ticker.C {
+			fmt.Println("tick at", t)
 		}
 	}()
 	return nil
