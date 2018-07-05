@@ -27,3 +27,4 @@ src/gomessage*
 src/nsq
 bin/*
 pkg/*
+src/dw-ods
