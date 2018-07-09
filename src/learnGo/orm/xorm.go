@@ -13,11 +13,13 @@ var (
 )
 
 type TestOrder struct {
-	Id        int64
-	Fee       float64    `xorm:"'fee'"`
-	AFee      float64    `xorm:"actually_fee"`
-	SubOrders []SubOrder `xorm:"-"`
-	Version   int        `xorm:"version 'version'"`
+	Id         int64
+	Fee        float64    `xorm:"'fee'"`
+	AFee       float64    `xorm:"actually_fee"`
+	SubOrders  []SubOrder `xorm:"-"`
+	Version    int        `xorm:"version 'version'"`
+	CreateTime int        `xorm:"created 'create_time'"`
+	UpdateTime int        `xorm:"updated 'update_time'"`
 }
 
 type SubOrder struct {
@@ -32,7 +34,7 @@ func main() {
 
 	// engine.DropTables(&TestOrder{})
 	engine.CreateTables(&TestOrder{})
-	// engine.Insert(&TestOrder{Fee: 0.666, AFee: 0.8888})
+	//engine.Insert(&TestOrder{Fee: 0.666, AFee: 0.8888})
 
 	//AllCols
 	//MustCols
@@ -48,6 +50,6 @@ func main() {
 	m["fee"] = 0.1
 	fmt.Println(m)
 
-	// engine.Id(1).AllCols().Update(&to)
-	engine.Id(1).Update(m)
+	engine.Id(1).Update(&to)
+	//engine.Id(1).Update(m)
 }
