@@ -26,6 +26,7 @@ src/gopkg.in
 src/gomessage*
 src/nsq
 src/trade-service
+src/trade
 bin/*
 pkg/*
 src/dw-ods
