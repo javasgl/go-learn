@@ -24,7 +24,7 @@ func main() {
 
 	a = p.Get().(int)
 	p.Put(1)
-	runtime.GC() //手动调用GC
+	runtime.GC() // 手动调用GC
 	b = p.Get().(int)
 	fmt.Println(a, b)
 }

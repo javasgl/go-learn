@@ -18,6 +18,15 @@ func main() {
 			continue
 		}
 	}
+	m := make(map[int]uint)
+	for i := 0; i <= 10; i++ {
+		if i%2 > 0 {
+			m[i%2] += 1
+		} else {
+			m[i%2] += 2
+		}
+	}
+	fmt.Println(m)
 
 }
 func print(arrMap map[int]string) {

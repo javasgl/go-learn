@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>websocket</title>
+</head>
+<body>
+
+
+<button id="open-btn">open</button>
+<input type="text" id="message-in" />
+<button id="send-btn">send</button>
+<button id="close-btn">close</button>
+<button id="clear-btn">clear</button>
+<div id="message">
+
+</div>
+
+<script>
+    window.addEventListener("load",function () {
+        let ws
+        document.getElementById("open-btn").onclick=function () {
+            if (ws){
+                return false
+            }
+            ws=new WebSocket("ws://localhost:1234/ws")
+            ws.onopen=function () {
+                print("open ws");
+            }
+            ws.onclose=function () {
+                print("close ws");
+                ws=null;
+            }
+            ws.onmessage=function (evt) {
+                print("message from server: "+evt.data)
+            }
+            return false
+        }
+        document.getElementById("send-btn").onclick=function () {
+            if (!ws) {
+                return false
+            }
+            let message = document.getElementById("message-in").value
+            ws.send(message)
+            print("send: "+ message)
+        }
+        document.getElementById("close-btn").onclick=function () {
+            if (!ws) {
+                return false
+            }
+            ws.close()
+            ws=null
+        }
+        document.getElementById("clear-btn").onclick=function () {
+            document.getElementById("message").innerHTML=""
+        }
+    })
+    function print(str) {
+        document.getElementById("message").innerHTML+=str+"</br>"
+        console.log(str)
+    }
+</script>
+</body>
+</html>
