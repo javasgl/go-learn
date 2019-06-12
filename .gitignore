@@ -30,3 +30,5 @@ src/trade
 bin/*
 pkg/*
 src/dw-ods
+src/qiniu.com
+src/go.mongodb.org
