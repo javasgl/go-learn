@@ -32,3 +32,8 @@ pkg/*
 src/dw-ods
 src/qiniu.com
 src/go.mongodb.org
+src/github.com/qbox/*
+src/xorm.io
+src/mvdan.cc
+src/code.gitea.io/
+src/honnef.co/

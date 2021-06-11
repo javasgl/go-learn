@@ -6,7 +6,7 @@ import (
 )
 
 type TestOrderV2 struct {
-	Id         int64
+	gorm.Model
 	Fee        float64
 	AFee       float64
 	Version    int
@@ -25,9 +25,9 @@ func main() {
 	db.AutoMigrate(&TestOrderV2{})
 	// db.Create(&TestOrderV2{Fee: 12.34, AFee: 23.12, Version: 1, CreateTime: time.Now().Unix()})
 	var order TestOrderV2
-	db.First(&order, 1)
-	db.Model(&order).Update("Fee", 2.84)
-	db.Model(&order).Update("AFee", 0)
+	db.Debug().Unscoped().First(&order, 1)
+	db.Debug().Unscoped().Model(&order).Update("Fee", 2.84)
+	db.Debug().Unscoped().Model(&order).Update("AFee", 0)
 	order.Version = 1
-	db.Model(&order).Update()
+	db.Debug().Unscoped().Model(&order).Update()
 }
